@@ -1,0 +1,51 @@
+<div class="bg-secondary" align="center" style="color: #000000; font-size: 150%; font-family: Arial; font-weight: bold">
+    Nuevo visitante
+</div>
+<div class="container mt-5">
+    <div class="row justify-content-md-center">
+        <div class="col-md-10" *ngIf="isLoading">
+            <div class="alert alert-info" role="alert">
+                <strong>Registrando....</strong>
+            </div>
+        </div>
+        <div class="col-md-10" *ngIf="areThereErrors">
+            <div class="alert alert-danger" role="alert">
+                <strong> {{ alertErrorMsg }} </strong>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <form novalidate autocomplete="off" (ngSubmit)="newVisitante()" [formGroup]="form">
+                <div class="mb-3">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" class="form-control" [class.is-invalid]="isNombreValid" formControlName="nombre">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Apellido Paterno</label>
+                    <input type="text" class="form-control" [class.is-invalid]="isApaValid" formControlName="apellidoPaterno">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Apellido Materno</label>
+                    <input type="text" class="form-control" [class.is-invalid]="isAmaValid" formControlName="apellidoMaterno">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" [class.is-invalid]="isEmailValid" formControlName="email">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Número de acompañantes</label>
+                    <input type="number" class="form-control" [class.is-invalid]="isNumeroAcompanantesValid" formControlName="numeroAcompanantes">
+                </div>
+                <div class="mb-3">
+                    <div class="btn-toolbar" role="toolbar">
+                        <div class="btn-group me-2" role="group">
+                            <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Registrar</button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-link" routerLink="/visitantes" role="button">Regresar</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

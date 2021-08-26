@@ -1,0 +1,50 @@
+<div class="bg-secondary" align="center" style="color: #000000; font-size: 150%; font-family: Arial; font-weight: bold">
+    Visitantes
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group me-2" role="group">
+                    <a class="btn btn-success" routerLink="/visitantes/nuevo" role="button">Agregar visitante</a>
+                </div>
+                <div class="btn-group" role="group">
+                    <a class="btn btn-link" routerLink="/principal" role="button">Regresar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 mt-5">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Número de acompañantes</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let visitante of visitantes; let i = index;">
+                            <td> {{ i + 1 }} </td>
+                            <td> {{ visitante.nombre }} {{ visitante.apellidos }} </td>
+                            <td> {{ visitante.email }} </td>
+                            <td> {{ visitante.numeroAcompanantes }} </td>
+                            <td>
+                                <div class="btn-toolbar" role="toolbar">
+                                    <div class="btn-group me-2" role="group">
+                                        <button type="button" class="btn btn-warning" (click)="editVisitante(visitante.id)">Editar</button>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-danger" (click)="deleteVisitante(visitante.id)">Eliminar</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
